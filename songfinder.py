@@ -22,7 +22,7 @@ def decryptor(encrypted: str):
 
 async def DownloadSong(song_id: str) -> dict:
     async with aiohttp.ClientSession() as session:
-        async with session.get(f"https://songfinder.alwaysdata.net/download-songs-by-id?id={song_id}") as response:
+        async with session.get(f"https://songfinder.alwaysdata.net/download-song-by-id?id={song_id}") as response:
             if response.ok:
                 buffer = BytesIO()
                 async for chunk in response.content.iter_chunked(1024):
