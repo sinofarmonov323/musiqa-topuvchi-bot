@@ -24,7 +24,6 @@ async def send_song(message: types.Message):
 @dp.callback_query(F.data.in_(["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]))
 async def numbers(call: types.CallbackQuery):
     await call.answer(cache_time=1)
-    print(songs)
     try:
         if call.data == "one":
             song_url = await DownloadSong(songs[0]['song_id'])
@@ -57,7 +56,7 @@ async def numbers(call: types.CallbackQuery):
             song_url = await DownloadSong(songs[9]['song_id'])
             await call.message.answer_audio(types.BufferedInputFile(song_url, filename=songs[9]['title']))
     except Exception as e:
-        print(e)
+        print("Error: ", e)
         await call.message.answer("Musiqa Topilmadi!")
 
 
