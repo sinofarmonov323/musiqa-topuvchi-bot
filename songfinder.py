@@ -14,12 +14,6 @@ async def SearchSong(name: str) -> dict:
             else:
                 return {"error": "Failed to retrieve data"}
 
-def decryptor(encrypted: str):
-    return ''.join(
-        chr(int(encrypted[i:i+3][::-1]))
-        for i in range(0, len(encrypted), 3)
-    )
-
 async def DownloadSong(song_id: str) -> dict:
     async with aiohttp.ClientSession() as session:
         async with session.get(f"https://songfinder.alwaysdata.net/download-song-by-id?id={song_id}") as response:
