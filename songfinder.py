@@ -24,9 +24,9 @@ async def DownloadSong(song_id: str) -> dict:
                 buffer.seek(0)
                 return buffer.getvalue()
             else:
-                {"error": response.status}
+                return {"error": response.status, "message": response.url}
 
 # data = asyncio.run(SearchSong("eminem mockingbird"))
-# data = asyncio.run(DownloadSong("380750890760670080911221380760840"))
+data = asyncio.run(DownloadSong("380750890760670080911221380760840"))
 
-# print(data)
+print(data)
